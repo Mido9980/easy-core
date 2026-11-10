@@ -57,3 +57,10 @@ font-size:.78rem;opacity:0;pointer-events:none;transition:.2s;z-index:60}
 .stats span{font-size:.68rem;color:var(--mut)}
 .outpre{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:11px;margin:10px 0 0;
 font-family:ui-monospace,Menlo,monospace;font-size:.72rem;line-height:1.5;overflow:auto;max-height:240px;white-space:pre-wrap;color:var(--mut)}
+.gate{position:fixed;inset:0;background:rgba(4,9,8,.92);backdrop-filter:blur(8px);display:none;
+align-items:center;justify-content:center;z-index:90;padding:20px}
+.gate.on{display:flex}
+.gatebox{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;width:100%;max-width:340px}
+.gatebox .logo{justify-content:center;margin-bottom:6px;font-size:1.1rem}
+.gatebox .hint{text-align:center;margin:0 0 12px}
+.gatebox .primary{width:100%;margin-top:14px}

@@ -34,5 +34,31 @@ $('#tSet').onclick = async () => {
 $('#tGet').onclick = async () => show(await post({action:'kv.get', app:$('#tApp').value.trim(), key:$('#tKey').value.trim()}));
 $('#tList').onclick = async () => show(await post({action:'kv.list', app:$('#tApp').value.trim()}));
 
-loadAll();
-setInterval(loadAll, 60000);
+/* ---- login gate: name easycode + phone as the password ---- */
+const OWNER_PHONE = '201100102398';
+
+function unlocked(){ return localStorage.getItem('core.ok') === '1'; }
+function setGate(on){ document.getElementById('gate').classList.toggle('on', on); }
+
+async function tryLogin(){
+  const nm = document.getElementById('gName').value.trim().toLowerCase();
+  const pw = document.getElementById('gPass').value.replace(/\s+/g,'');
+  const err = document.getElementById('gErr');
+  err.textContent = '';
+  if (nm !== 'easycode') { err.textContent = 'الاسم لازم يكون easycode'; return; }
+  if (pw.length < 4) { err.textContent = 'اكتب رقم الموبايل'; return; }
+  try{
+    const r = await post({ action:'login', phone: OWNER_PHONE, pin: pw });
+    if (!r.ok){ err.textContent = r.error || 'البيانات غلط'; return; }
+    localStorage.setItem('core.ok','1');
+    localStorage.setItem('core.name', r.name || 'easycode');
+    setGate(false);
+    loadAll();
+  }catch(e){ err.textContent = 'مشكلة اتصال'; }
+}
+
+document.getElementById('gGo').onclick = tryLogin;
+document.getElementById('gPass').addEventListener('keydown', e => { if (e.key === 'Enter') tryLogin(); });
+
+if (!unlocked()) setGate(true); else loadAll();
+setInterval(() => { if (unlocked()) loadAll(); }, 60000);
