@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#07110F">
+<title>EASY CORE — باك إند كل البرامج</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="logo"><span>◆</span><b>EASY</b><i>CORE</i></div>
+  <div class="hact">
+    <span class="pill" id="state">…</span>
+    <button class="iconbtn" id="refresh" type="button">⟳</button>
+  </div>
+</header>
+
+<main>
+  <section class="card hero">
+    <h1>باك إند واحد يخدم كل البرامج</h1>
+    <p class="hint" id="apiLine" dir="ltr">coreApi</p>
+    <div class="stats" id="stats">
+      <div><b id="sEvents">0</b><span>حدث</span></div>
+      <div><b id="sUsers">0</b><span>مستخدم</span></div>
+      <div><b id="sItems">0</b><span>مفتاح مخزّن</span></div>
+      <div><b id="sApps">0</b><span>برنامج</span></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="cardhead"><h2>البرامج المسجلة</h2><span class="mut" id="appsInfo"></span></div>
+    <div id="apps" class="tables"><p class="hint">جاري التحميل…</p></div>
+  </section>
+
+  <section class="card">
+    <div class="cardhead"><h2>اختبار سريع</h2></div>
+    <label class="lbl">البرنامج</label>
+    <input id="tApp" dir="ltr" value="easy-link">
+    <label class="lbl">المفتاح</label>
+    <input id="tKey" dir="ltr" value="theme">
+    <label class="lbl">القيمة (JSON أو نص)</label>
+    <input id="tVal" dir="ltr" value='{"mode":"dark"}'>
+    <div class="row">
+      <button class="primary" id="tSet" type="button">حفظ</button>
+      <button class="mini" id="tGet" type="button">قراءة</button>
+      <button class="mini" id="tList" type="button">كل المفاتيح</button>
+    </div>
+    <pre id="tOut" dir="ltr" class="outpre">—</pre>
+  </section>
+
+  <section class="card">
+    <div class="cardhead"><h2>آخر الأحداث</h2></div>
+    <div id="events" class="hist"><p class="hint">مفيش أحداث.</p></div>
+  </section>
+
+  <section class="card note">
+    <h3>ازاي أي برنامج يستخدمه</h3>
+    <pre dir="ltr" class="outpre">POST /functions/coreApi
+{ "action":"event", "app":"easy-video", "type":"generate", "detail":"veo3" }
+
+{ "action":"kv.set", "app":"easy-link", "phone":"2011...", "key":"config", "value":{"theme":"dark"} }
+{ "action":"kv.get", "app":"easy-link", "phone":"2011...", "key":"config" }
+
+{ "action":"register", "phone":"2011...", "pin":"1234", "app":"easy-video" }
+{ "action":"login",    "phone":"2011...", "pin":"1234" }</pre>
+  </section>
+</main>
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
