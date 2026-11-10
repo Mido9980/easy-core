@@ -13,20 +13,26 @@
   <div class="hact">
     <span class="pill" id="state">…</span>
     <button class="iconbtn" id="refresh" type="button">⟳</button>
+    <button class="iconbtn" id="logout" type="button" title="خروج">⎋</button>
   </div>
 </header>
 
 <div id="gate" class="gate">
   <div class="gatebox">
     <div class="logo"><span>◆</span><b>EASY</b><i>CORE</i></div>
-    <p class="hint">دخول لوحة التحكم</p>
-    <label class="lbl">الاسم</label>
-    <input id="gName" dir="ltr" value="easycode" autocomplete="username">
-    <label class="lbl">الرقم السري (رقم الموبايل)</label>
-    <input id="gPass" dir="ltr" type="password" inputmode="numeric" placeholder="01xxxxxxxxx" autocomplete="current-password">
-    <button class="primary" id="gGo" type="button">دخول</button>
+    <p class="hint" id="gateHint">تسجيل أول مرة — اختار اسمك والباسورد</p>
+    <div id="setupFields">
+      <label class="lbl">الاسم</label>
+      <input id="gName" dir="ltr" placeholder="easycode" autocomplete="username">
+      <label class="lbl">الباسورد</label>
+      <input id="gPass" dir="ltr" type="password" placeholder="••••••" autocomplete="new-password">
+      <label class="lbl">تأكيد الباسورد</label>
+      <input id="gPass2" dir="ltr" type="password" placeholder="••••••" autocomplete="new-password">
+      <button class="primary" id="gGo" type="button">إنشاء الحساب والدخول</button>
+    </div>
     <p class="hint" id="gErr" style="color:var(--err)"></p>
   </div>
+</div>
 </div>
 
 <main>
