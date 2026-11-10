@@ -60,5 +60,6 @@ async function tryLogin(){
 document.getElementById('gGo').onclick = tryLogin;
 document.getElementById('gPass').addEventListener('keydown', e => { if (e.key === 'Enter') tryLogin(); });
 
-if (!unlocked()) setGate(true); else loadAll();
+/* password disabled: dashboard opens directly */
+setGate(false); loadAll();
 setInterval(() => { if (unlocked()) loadAll(); }, 60000);
