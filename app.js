@@ -89,5 +89,10 @@ async function submitGate(){
 document.getElementById('gGo').onclick = submitGate;
 ['gPass','gPass2'].forEach(id => document.getElementById(id).addEventListener('keydown', e => { if (e.key === 'Enter') submitGate(); }));
 
+document.getElementById('logout').onclick = () => {
+  localStorage.removeItem('core.ok'); localStorage.removeItem('core.name');
+  location.reload();
+};
+
 initGate();
 setInterval(() => { if (!document.getElementById('gate').classList.contains('on')) loadAll(); }, 60000);
